@@ -17,8 +17,7 @@ app.get("/users", async (req, res) => {
   res.send(result);
 });
 
-app;
-
+a;
 
 app.post("/hash", async (req, res) => {
   const { password } = req.body;
