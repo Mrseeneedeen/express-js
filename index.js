@@ -19,6 +19,12 @@ app.get("/users", async (req, res) => {
 
 a;
 
+app.post("/hash", async (req, res) => {
+  const { password } = req.body;
+  const hash = crypto.createHash("md5").update(password).digest("hex"); // การใช้ MD5
+  res.json({ hashedPassword: hash });
+});
+
 // Code Smell Example: Hardcoding SQL Queries and Using String Interpolation
 
 app.get("/products", async (req, res) => {
