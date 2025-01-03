@@ -20,6 +20,30 @@ app.get("/users", async (req, res) => {
 app;
 
 
+// Code Smell Example: Hardcoding SQL Queries and Using String Interpolation
+
+app.get("/products", async (req, res) => {
+  const productId = req.query.id;
+  const [result] = await knex.raw(`SELECT * FROM products WHERE id = ${productId}`);
+  res.send(result);
+});
+
+// Code Smell Example: Not Handling Errors
+
+app.get("/categories", async (req, res) => {
+  const [result] = await knex.raw(`SELECT * FROM categories`);
+  res.send(result);
+});
+
+// Code Smell Example: Not Validating User Input
+
+app.post("/add-user", async (req, res) => {
+  const { name, email } = req.body;
+  await knex.raw(`INSERT INTO users (name, email) VALUES ('${name}', '${email}')`);
+  res.send("User added successfully");
+});
+
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
