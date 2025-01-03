@@ -17,8 +17,7 @@ app.get("/users", async (req, res) => {
   res.send(result);
 });
 
-app;
-
+a;
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
